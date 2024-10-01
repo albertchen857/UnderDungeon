@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs0ua1mnv2o11"]
+
+[ext_resource type="Texture2D" uid="uid://bkhyb163o2o5m" path="res://img/lazerGun.png" id="1_83a40"]
+[ext_resource type="Script" path="res://lazer.gd" id="1_rvdqf"]
+[ext_resource type="Texture2D" uid="uid://cjma0bioppk5i" path="res://img/Lazer.png" id="2_sk5j6"]
+[ext_resource type="Texture2D" uid="uid://b5vt383xc3ab3" path="res://img/PreLazer.png" id="3_4s2je"]
+[ext_resource type="AudioStream" uid="uid://dfgugupb4ccv6" path="res://src/lazer.ogg" id="5_k2j6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcfgg"]
+size = Vector2(540, 10.6667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u8k6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sk5j6")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4s2je")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]
+
+[node name="Lazer" type="Area2D"]
+script = ExtResource("1_rvdqf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.43051e-06)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_kcfgg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_6u8k6")
+animation = &"blue"
+offset = Vector2(0, -142)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(6, 6)
+texture = ExtResource("1_83a40")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_k2j6p")
+volume_db = 24.0
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

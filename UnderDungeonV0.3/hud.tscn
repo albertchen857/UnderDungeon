@@ -1,0 +1,504 @@
+[gd_scene load_steps=30 format=3 uid="uid://d1dn7n3msl1jp"]
+
+[ext_resource type="Texture2D" uid="uid://10xx0oj8n383" path="res://img/sc/brick.png" id="1_0h08n"]
+[ext_resource type="Script" path="res://hud.gd" id="1_h5i7k"]
+[ext_resource type="FontFile" uid="uid://ddiutwg75aa5l" path="res://src/MFont.otf" id="3_wihqm"]
+[ext_resource type="Texture2D" uid="uid://gkijekk6a65g" path="res://img/mossy_stone_bricks.png" id="4_40mnv"]
+[ext_resource type="Texture2D" uid="uid://qagtxkaalfu2" path="res://img/smooth_stone.png" id="5_baj3h"]
+[ext_resource type="Texture2D" uid="uid://gd5tcksrvh6q" path="res://img/MovingKeys.png" id="6_irfq0"]
+[ext_resource type="Texture2D" uid="uid://jj86ck3003gd" path="res://img/sc/brick_light.png" id="7_h0krx"]
+[ext_resource type="AudioStream" uid="uid://brag1gtbmt83b" path="res://src/Menu.mp3" id="7_qv0gd"]
+[ext_resource type="Texture2D" uid="uid://cye12us75sdd2" path="res://img/sc/planks.png" id="8_gu2e1"]
+[ext_resource type="Texture2D" uid="uid://dix4lka6qsw28" path="res://img/sc/floor2.png" id="9_n0ik2"]
+[ext_resource type="Texture2D" uid="uid://b540peat3sd5r" path="res://img/sc/pillar_light.png" id="10_sol2c"]
+[ext_resource type="Texture2D" uid="uid://0hwj2klnukyr" path="res://img/key_yellow.png" id="11_udl51"]
+[ext_resource type="Texture2D" uid="uid://iomavn750ypr" path="res://img/key_blue.png" id="12_xi62l"]
+[ext_resource type="Texture2D" uid="uid://scc0qjgvhdtk" path="res://img/arrow.png" id="13_62cng"]
+[ext_resource type="Texture2D" uid="uid://cx8gv31egrrrb" path="res://img/mob/guard1.png" id="15_i0wf4"]
+[ext_resource type="Texture2D" uid="uid://7u2ij3fj4rhw" path="res://img/prefireball2.png" id="15_trlko"]
+[ext_resource type="Texture2D" uid="uid://nel1n8jgr10e" path="res://img/prefireball.png" id="16_i8o4i"]
+[ext_resource type="Texture2D" uid="uid://dwhouk5ansmgj" path="res://img/polished_andesite.png" id="16_uijd8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gfso"]
+font = ExtResource("3_wihqm")
+font_size = 160
+font_color = Color(1, 0.516667, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dx3l4"]
+font_size = 45
+font_color = Color(0.611765, 1, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_olb0a"]
+font = ExtResource("3_wihqm")
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_7cxvs"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibtvx"]
+font_size = 30
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7tt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_trlko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_i8o4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xbt5"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p60j6"]
+font = ExtResource("3_wihqm")
+font_size = 100
+font_color = Color(0.98, 0.833, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aq8l3"]
+font_size = 60
+font_color = Color(1, 0.516667, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uhas5"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_teym2"]
+font_size = 60
+
+[node name="HUD" type="Node"]
+script = ExtResource("1_h5i7k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -864.0
+offset_bottom = -486.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("1_0h08n")
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="."]
+offset_left = 73.0
+offset_top = 45.0
+offset_right = 745.0
+offset_bottom = 368.0
+text = "Under
+Dungeon"
+label_settings = SubResource("LabelSettings_7gfso")
+
+[node name="Version" type="Label" parent="."]
+offset_left = 924.0
+offset_top = 21.0
+offset_right = 1130.0
+offset_bottom = 84.0
+text = "V0.3-Beta"
+label_settings = SubResource("LabelSettings_dx3l4")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 788.0
+offset_top = 421.0
+offset_right = 1087.0
+offset_bottom = 581.0
+texture = ExtResource("4_40mnv")
+
+[node name="Start" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 227.0
+offset_top = 114.0
+offset_right = 295.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+text = "START"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 432.0
+offset_top = 422.0
+offset_right = 731.0
+offset_bottom = 582.0
+texture = ExtResource("4_40mnv")
+
+[node name="Tutorial" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = 118.0
+offset_right = -62.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+text = "Tutorial"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 74.0
+offset_top = 422.0
+offset_right = 373.0
+offset_bottom = 582.0
+texture = ExtResource("4_40mnv")
+
+[node name="Setting" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -489.0
+offset_top = 118.0
+offset_right = -420.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+text = "Setting"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="oB" type="OptionButton" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 308.0
+offset_top = 24.0
+offset_right = 353.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="tutorial" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="tutorial"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.670588)
+
+[node name="tutBG" type="TextureRect" parent="tutorial"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -483.0
+offset_top = -240.0
+offset_right = -451.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(30, 30)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_baj3h")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="tutorial"]
+offset_left = 130.0
+offset_top = 129.0
+offset_right = 612.0
+offset_bottom = 266.0
+text = "TUTORIAL"
+label_settings = SubResource("LabelSettings_olb0a")
+
+[node name="MovingKeys" type="Sprite2D" parent="tutorial"]
+position = Vector2(332, 311)
+texture = ExtResource("6_irfq0")
+
+[node name="Label2" type="Label" parent="tutorial"]
+offset_left = 226.0
+offset_top = 366.0
+offset_right = 441.0
+offset_bottom = 400.0
+text = "control movement"
+label_settings = SubResource("LabelSettings_7cxvs")
+
+[node name="BrickLight" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(817, 471)
+scale = Vector2(4, 4)
+texture = ExtResource("7_h0krx")
+
+[node name="Planks" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(666, 323)
+scale = Vector2(4, 4)
+texture = ExtResource("8_gu2e1")
+
+[node name="Brick" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(820, 323)
+scale = Vector2(4, 4)
+texture = ExtResource("1_0h08n")
+
+[node name="Floor2" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(820, 173)
+scale = Vector2(4, 4)
+texture = ExtResource("9_n0ik2")
+
+[node name="PillarLight" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(964, 323)
+scale = Vector2(4, 4)
+texture = ExtResource("10_sol2c")
+
+[node name="KeyYellow" type="Sprite2D" parent="tutorial"]
+position = Vector2(818, 483)
+texture = ExtResource("11_udl51")
+
+[node name="KeyBlue" type="Sprite2D" parent="tutorial"]
+position = Vector2(821, 188)
+texture = ExtResource("12_xi62l")
+
+[node name="Arrow" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(758, 368)
+rotation = -1.5708
+scale = Vector2(1.4898, 1.3677)
+texture = ExtResource("13_62cng")
+flip_h = true
+
+[node name="Label3" type="Label" parent="tutorial"]
+offset_left = 639.0
+offset_top = 267.0
+offset_right = 690.0
+offset_bottom = 290.0
+text = "ENTRY"
+
+[node name="Label4" type="Label" parent="tutorial"]
+offset_left = 770.0
+offset_top = 114.0
+offset_right = 868.0
+offset_bottom = 137.0
+text = "Guard Room"
+
+[node name="Label5" type="Label" parent="tutorial"]
+offset_left = 789.0
+offset_top = 266.0
+offset_right = 851.0
+offset_bottom = 289.0
+text = "Hallway"
+
+[node name="Label6" type="Label" parent="tutorial"]
+offset_left = 786.0
+offset_top = 413.0
+offset_right = 846.0
+offset_bottom = 436.0
+text = "Storage"
+
+[node name="Label7" type="Label" parent="tutorial"]
+offset_left = 951.0
+offset_top = 267.0
+offset_right = 980.0
+offset_bottom = 290.0
+text = "Exit"
+
+[node name="Label8" type="Label" parent="tutorial"]
+offset_left = 650.0
+offset_top = 382.0
+offset_right = 762.0
+offset_bottom = 457.0
+text = "1. get yellow key in the stoage maze"
+autowrap_mode = 3
+
+[node name="Arrow2" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(838, 362)
+rotation = -2.337
+scale = Vector2(1.42069, 1.33563)
+texture = ExtResource("13_62cng")
+
+[node name="Arrow3" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(799, 262)
+rotation = 2.31955
+scale = Vector2(1.4898, 1.3677)
+texture = ExtResource("13_62cng")
+flip_h = true
+
+[node name="Label9" type="Label" parent="tutorial"]
+offset_left = 667.0
+offset_top = 178.0
+offset_right = 779.0
+offset_bottom = 253.0
+text = "2. beat the boss and get the blue key"
+autowrap_mode = 3
+
+[node name="Arrow4" type="Sprite2D" parent="tutorial"]
+texture_filter = 1
+position = Vector2(884, 262)
+rotation = -0.0139626
+scale = Vector2(1.71028, 1.64159)
+texture = ExtResource("13_62cng")
+
+[node name="Label10" type="Label" parent="tutorial"]
+offset_left = 882.0
+offset_top = 143.0
+offset_right = 994.0
+offset_bottom = 244.0
+text = "3. open the exit door and excape the doungeon"
+autowrap_mode = 3
+
+[node name="Label11" type="Label" parent="tutorial"]
+offset_left = 169.0
+offset_top = 471.0
+offset_right = 509.0
+offset_bottom = 535.0
+text = "ESC EXIT THE TUTORIAL"
+label_settings = SubResource("LabelSettings_ibtvx")
+
+[node name="Guard1" type="Sprite2D" parent="tutorial"]
+position = Vector2(821, 157)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_i0wf4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="tutorial"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(945, 402)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u7tt4")
+frame_progress = 0.885462
+
+[node name="Label12" type="Label" parent="tutorial"]
+offset_left = 867.0
+offset_top = 429.0
+offset_right = 1024.0
+offset_bottom = 530.0
+text = "If you seen Redlights run away. 
+careful the fireballs"
+label_settings = SubResource("LabelSettings_3xbt5")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qv0gd")
+autoplay = true
+
+[node name="setting" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="setting"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.670588)
+
+[node name="TextureRect" type="TextureRect" parent="setting"]
+texture_filter = 1
+offset_right = 481.0
+offset_bottom = 640.0
+texture = ExtResource("16_uijd8")
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="setting"]
+offset_left = 43.0
+offset_top = 37.0
+offset_right = 443.0
+offset_bottom = 137.0
+text = "SETTING"
+label_settings = SubResource("LabelSettings_p60j6")
+
+[node name="Label2" type="Label" parent="setting"]
+offset_left = 20.0
+offset_top = 181.0
+offset_right = 320.0
+offset_bottom = 264.0
+text = "Fast Mode"
+label_settings = SubResource("LabelSettings_aq8l3")
+
+[node name="Label3" type="Label" parent="setting"]
+offset_left = 20.0
+offset_top = 257.0
+offset_right = 238.0
+offset_bottom = 299.0
+text = "skip maze level"
+label_settings = SubResource("LabelSettings_uhas5")
+
+[node name="cB" type="CheckButton" parent="setting"]
+texture_filter = 1
+offset_left = 338.0
+offset_top = 192.0
+offset_right = 382.0
+offset_bottom = 216.0
+scale = Vector2(3, 3)
+
+[node name="Label4" type="Label" parent="setting"]
+offset_left = 888.0
+offset_top = 26.0
+offset_right = 1130.0
+offset_bottom = 109.0
+text = "ESC EXIT"
+label_settings = SubResource("LabelSettings_teym2")
+
+[node name="exit" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="exit"]
+offset_left = -925.0
+offset_top = -644.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="exit"]
+offset_left = -887.0
+offset_top = 648.0
+offset_bottom = 1292.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="exit"]
+offset_left = 1152.0
+offset_top = 648.0
+offset_right = 1996.0
+offset_bottom = 1292.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="exit"]
+offset_left = 1154.0
+offset_top = -646.0
+offset_right = 2074.0
+offset_bottom = -2.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="setting/cB" to="." method="_on_c_b_pressed"]

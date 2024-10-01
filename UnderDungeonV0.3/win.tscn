@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr3etdsc7q8l8"]
+
+[ext_resource type="Script" path="res://win.gd" id="1_wsuud"]
+[ext_resource type="Texture2D" uid="uid://jj86ck3003gd" path="res://img/sc/brick_light.png" id="2_n3ft2"]
+[ext_resource type="AudioStream" uid="uid://peubtgixa78b" path="res://src/Zen Garden.mp3" id="3_0l60q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3q6jb"]
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxev3"]
+font_size = 80
+font_color = Color(0, 1, 0.55, 1)
+
+[node name="win" type="Node2D"]
+script = ExtResource("1_wsuud")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+offset_right = 288.0
+offset_bottom = 162.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_n3ft2")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0.698039, 0, 1)
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 1118.0
+offset_bottom = 309.0
+text = "YOU ESCAPE"
+label_settings = SubResource("LabelSettings_3q6jb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 215.0
+offset_top = 276.0
+offset_right = 955.0
+offset_bottom = 386.0
+text = "MODE:EASY"
+label_settings = SubResource("LabelSettings_sxev3")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 303.0
+offset_top = 481.0
+offset_right = 429.0
+offset_bottom = 512.0
+scale = Vector2(4, 4)
+text = "EXIT THE GAME"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0l60q")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

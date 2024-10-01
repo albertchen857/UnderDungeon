@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://peubtgixa78b"
+path="res://.godot/imported/Zen Garden.mp3-c8d27b1d313e0fa15599ed2e058c3093.mp3str"
+
+[deps]
+
+source_file="res://src/Zen Garden.mp3"
+dest_files=["res://.godot/imported/Zen Garden.mp3-c8d27b1d313e0fa15599ed2e058c3093.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

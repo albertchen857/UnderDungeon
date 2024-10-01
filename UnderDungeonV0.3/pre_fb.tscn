@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8dqgrr154st8"]
+
+[ext_resource type="Texture2D" uid="uid://nel1n8jgr10e" path="res://img/prefireball.png" id="1_ymxnn"]
+[ext_resource type="Texture2D" uid="uid://7u2ij3fj4rhw" path="res://img/prefireball2.png" id="2_acjdj"]
+[ext_resource type="Script" path="res://pre_fb.gd" id="3_aahcv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwvjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ymxnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_acjdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PreFB" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_uwvjv")
+frame = 1
+frame_progress = 0.51169
+script = ExtResource("3_aahcv")

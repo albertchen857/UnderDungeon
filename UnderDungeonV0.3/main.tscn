@@ -1,0 +1,509 @@
+[gd_scene load_steps=47 format=3 uid="uid://dy05vk4hlx6hi"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_by3hp"]
+[ext_resource type="PackedScene" uid="uid://dh8ruadknhlmx" path="res://map.tscn" id="2_u0y4o"]
+[ext_resource type="PackedScene" uid="uid://c7k1mvmfmf2ea" path="res://player.tscn" id="4_mgfa7"]
+[ext_resource type="FontFile" uid="uid://ddiutwg75aa5l" path="res://src/MFont.otf" id="5_vel8o"]
+[ext_resource type="Texture2D" uid="uid://0hwj2klnukyr" path="res://img/key_yellow.png" id="6_bclh1"]
+[ext_resource type="Texture2D" uid="uid://iomavn750ypr" path="res://img/key_blue.png" id="7_ra01f"]
+[ext_resource type="Script" path="res://ui.gd" id="8_7at0w"]
+[ext_resource type="Script" path="res://key.gd" id="8_etm15"]
+[ext_resource type="Texture2D" uid="uid://bsv1gq8qjm443" path="res://img/battery1.png" id="8_unmp5"]
+[ext_resource type="Texture2D" uid="uid://c4scotxh5osqt" path="res://img/life_bar.png" id="9_3gs30"]
+[ext_resource type="Texture2D" uid="uid://dwhouk5ansmgj" path="res://img/polished_andesite.png" id="12_obwih"]
+[ext_resource type="PackedScene" uid="uid://dmebfk03qajks" path="res://fire_ball.tscn" id="13_iaobb"]
+[ext_resource type="PackedScene" uid="uid://cs0ua1mnv2o11" path="res://lazer.tscn" id="13_wpdxq"]
+[ext_resource type="PackedScene" uid="uid://c8dqgrr154st8" path="res://pre_fb.tscn" id="14_1igy1"]
+[ext_resource type="PackedScene" uid="uid://2m7lhi3v1vje" path="res://message.tscn" id="14_ep65f"]
+[ext_resource type="Texture2D" uid="uid://xpj5dk8mhwnv" path="res://img/explotion.png" id="15_jvu7g"]
+[ext_resource type="PackedScene" uid="uid://c2tobr0j1xgaw" path="res://guard.tscn" id="16_5ldf2"]
+[ext_resource type="AudioStream" uid="uid://0sf6gjwq1267" path="res://src/blocks.ogg" id="17_fyw4u"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_01wjx"]
+a = Vector2(0, -31)
+b = Vector2(0, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kldto"]
+size = Vector2(25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwcc8"]
+atlas = ExtResource("9_3gs30")
+region = Rect2(0, 44, 52, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbtbw"]
+atlas = ExtResource("9_3gs30")
+region = Rect2(0, 33, 52, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kctn"]
+atlas = ExtResource("9_3gs30")
+region = Rect2(0, 22, 52, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6613a"]
+atlas = ExtResource("9_3gs30")
+region = Rect2(0, 11, 52, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odik0"]
+atlas = ExtResource("9_3gs30")
+region = Rect2(0, 0, 52, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be2v1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwcc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbtbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kctn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6613a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odik0")
+}],
+"loop": true,
+"name": &"life",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wytu8"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_wtkmh"]
+font = ExtResource("5_vel8o")
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0.388235, 0.388235, 0.388235, 0.313726)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b45i2"]
+font = ExtResource("5_vel8o")
+font_size = 50
+font_color = Color(1, 1, 0.282353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqslj"]
+font = ExtResource("5_vel8o")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1qoj"]
+font = ExtResource("5_vel8o")
+font_size = 70
+font_color = Color(0.73, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gx0dr"]
+font = ExtResource("5_vel8o")
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_ek4hw"]
+font = ExtResource("5_vel8o")
+font_size = 130
+font_color = Color(0.0470588, 0.811765, 0.933333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pa5u2"]
+font = ExtResource("5_vel8o")
+font_size = 80
+font_color = Color(0.0470588, 0.811765, 0.933333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_acsnx"]
+font = ExtResource("5_vel8o")
+font_size = 60
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk84m"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(0, 0, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb7u5"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(61, 0, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ipl"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(126, 0, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4isfp"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(195, 0, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjc10"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(0, 76, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3qgy"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(61, 76, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lgaw"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(126, 76, 61, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t1bo"]
+atlas = ExtResource("15_jvu7g")
+region = Rect2(195, 76, 61, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ltau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk84m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb7u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3ipl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4isfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjc10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3qgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lgaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t1bo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnqd8"]
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ditr"]
+font_size = 80
+font_color = Color(0, 1, 0.55, 1)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_by3hp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -1602.0
+offset_right = 776.0
+offset_bottom = -575.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="map" parent="." instance=ExtResource("2_u0y4o")]
+
+[node name="Message" parent="." instance=ExtResource("14_ep65f")]
+
+[node name="exit_trig" type="Area2D" parent="Message"]
+position = Vector2(3007, 321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Message/exit_trig"]
+shape = SubResource("SegmentShape2D_01wjx")
+
+[node name="key" type="Node2D" parent="."]
+script = ExtResource("8_etm15")
+
+[node name="Key_yellow" type="Area2D" parent="key"]
+position = Vector2(2384, 1168)
+
+[node name="Sprite2D" type="Sprite2D" parent="key/Key_yellow"]
+texture_filter = 1
+texture = ExtResource("6_bclh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="key/Key_yellow"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_kldto")
+
+[node name="Key_blue" type="Area2D" parent="key"]
+visible = false
+position = Vector2(2582, -449)
+
+[node name="Sprite2D" type="Sprite2D" parent="key/Key_blue"]
+texture_filter = 1
+texture = ExtResource("7_ra01f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="key/Key_blue"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_kldto")
+
+[node name="StartPoint" type="Marker2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_mgfa7")]
+z_index = 0
+position = Vector2(324, 316)
+metadata/diffi = 0
+
+[node name="ui" type="CanvasLayer" parent="Player"]
+script = ExtResource("8_7at0w")
+
+[node name="battery" type="Sprite2D" parent="Player/ui"]
+texture_filter = 1
+position = Vector2(50, 65)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_unmp5")
+
+[node name="lifebar" type="AnimatedSprite2D" parent="Player/ui/battery"]
+texture_filter = 1
+position = Vector2(317.5, 2.5)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_be2v1")
+animation = &"life"
+
+[node name="Label" type="Label" parent="Player/ui/battery"]
+offset_left = 257.5
+offset_top = -32.5
+offset_right = 387.5
+offset_bottom = 36.5
+text = "100%"
+label_settings = SubResource("LabelSettings_wytu8")
+
+[node name="District" type="Label" parent="Player/ui"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -440.0
+offset_top = 38.0
+offset_right = -304.0
+offset_bottom = 63.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+text = "ROBOT HELL"
+label_settings = SubResource("LabelSettings_wtkmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bg" type="TextureRect" parent="Player/ui"]
+offset_left = 32.0
+offset_top = 147.0
+offset_right = 159.0
+offset_bottom = 361.0
+texture = ExtResource("12_obwih")
+expand_mode = 4
+
+[node name="title" type="Label" parent="Player/ui/bg"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 14.0
+offset_right = 55.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "LIST"
+label_settings = SubResource("LabelSettings_b45i2")
+
+[node name="task" type="Label" parent="Player/ui/bg"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 61.0
+offset_right = 120.0
+offset_bottom = 196.0
+text = "Go to Storage get Yellow kay open Guard Room"
+label_settings = SubResource("LabelSettings_vqslj")
+autowrap_mode = 3
+
+[node name="Guard" parent="." instance=ExtResource("16_5ldf2")]
+position = Vector2(2120, -625)
+
+[node name="Label" type="Label" parent="Guard"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -535.0
+offset_top = 300.0
+offset_right = 529.0
+offset_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NO ONE CAN EXIT THE DUNGEON!"
+label_settings = SubResource("LabelSettings_e1qoj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attack" type="Node2D" parent="Guard" groups=["bullet"]]
+
+[node name="PreFB" parent="Guard/attack" instance=ExtResource("14_1igy1")]
+
+[node name="FireBall" parent="Guard/attack" instance=ExtResource("13_iaobb")]
+position = Vector2(-9, 176)
+
+[node name="Lazer" parent="Guard/attack" instance=ExtResource("13_wpdxq")]
+position = Vector2(-9, 176)
+
+[node name="bossLife" type="CanvasLayer" parent="Guard"]
+
+[node name="CPU" type="Label" parent="Guard/bossLife"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -107.0
+offset_right = 6.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CPU"
+label_settings = SubResource("LabelSettings_gx0dr")
+
+[node name="guardlife" type="Label" parent="Guard/bossLife"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = 422.0
+offset_right = 8.0
+offset_bottom = 572.0
+grow_horizontal = 0
+text = "0%"
+label_settings = SubResource("LabelSettings_ek4hw")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="Guard/bossLife"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -563.0
+offset_top = 245.0
+offset_right = -243.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_pa5u2")
+
+[node name="Diffi" type="Label" parent="Guard/bossLife"]
+offset_left = 290.0
+offset_top = 36.0
+offset_right = 434.0
+offset_bottom = 96.0
+text = "Easy"
+label_settings = SubResource("LabelSettings_acsnx")
+
+[node name="Explotion1" type="AnimatedSprite2D" parent="Guard"]
+texture_filter = 1
+position = Vector2(-1, 3)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2ltau")
+frame = 6
+frame_progress = 0.705335
+
+[node name="Explotion2" type="AnimatedSprite2D" parent="Guard"]
+texture_filter = 1
+position = Vector2(147, 66)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_2ltau")
+frame = 6
+frame_progress = 0.705335
+
+[node name="Explotion3" type="AnimatedSprite2D" parent="Guard"]
+texture_filter = 1
+position = Vector2(-115, -55)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ltau")
+frame = 1
+frame_progress = 0.634052
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2100, -570)
+zoom = Vector2(0.7, 0.7)
+
+[node name="dead" type="Node2D" parent="."]
+visible = false
+position = Vector2(1238, -1054)
+scale = Vector2(1.5, 1.5)
+
+[node name="ColorRect" type="ColorRect" parent="dead"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0, 0, 0.313726)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="dead"]
+offset_left = 69.0
+offset_top = 42.0
+offset_right = 1082.0
+offset_bottom = 315.0
+text = "YOU DEAD"
+label_settings = SubResource("LabelSettings_pnqd8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="dead"]
+offset_left = 215.0
+offset_top = 276.0
+offset_right = 955.0
+offset_bottom = 386.0
+text = "You only live once~"
+label_settings = SubResource("LabelSettings_3ditr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="dead"]
+texture_filter = 1
+offset_left = 303.0
+offset_top = 481.0
+offset_right = 429.0
+offset_bottom = 512.0
+scale = Vector2(4, 4)
+text = "EXIT THE GAME"
+metadata/_edit_use_anchors_ = true
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_fyw4u")
+volume_db = 5.0
+autoplay = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="st" type="ColorRect" parent="."]
+visible = false
+offset_left = -170.0
+offset_top = -50.0
+offset_right = 1148.0
+offset_bottom = 770.0
+
+[connection signal="BdoorFree" from="Message" to="map" method="_on_message_bdoor_free"]
+[connection signal="YdoorFree" from="Message" to="map" method="_on_message_ydoor_free"]
+[connection signal="show_lable" from="Message" to="Player/ui" method="_on_message_show_lable"]
+[connection signal="start" from="Message" to="map" method="_on_message_start"]
+[connection signal="start" from="Message" to="Player" method="_on_message_start"]
+[connection signal="start" from="Message" to="Guard" method="_on_message_start"]
+[connection signal="zoom_rg" from="Message" to="Player" method="_on_message_zoom_rg"]
+[connection signal="zoom_sm" from="Message" to="Player" method="_on_message_zoom_sm"]
+[connection signal="body_entered" from="Message/exit_trig" to="Message" method="_on_exit_trig_body_entered"]
+[connection signal="BkeyHit" from="key" to="Player" method="_on_key_blue_bkey_hit"]
+[connection signal="YkeyHit" from="key" to="Player" method="_on_key_yellow_ykey_hit"]
+[connection signal="body_entered" from="key/Key_yellow" to="key" method="_on_key_yellow_body_entered"]
+[connection signal="body_entered" from="key/Key_blue" to="key" method="_on_key_blue_body_entered"]
+[connection signal="BkeyBack" from="Player" to="Message" method="_on_player_bkey_back"]
+[connection signal="YkeyBack" from="Player" to="Message" method="_on_player_ykey_back"]
+[connection signal="gameover" from="Player" to="." method="_on_player_gameover"]
+[connection signal="gameover" from="Player" to="Guard" method="_on_player_gameover"]
+[connection signal="bullet" from="Guard" to="Player" method="_on_guard_bullet"]
+[connection signal="playerWin" from="Guard" to="." method="_on_guard_player_win"]
+[connection signal="playerWin" from="Guard" to="map" method="_on_guard_player_win"]
+[connection signal="playerWin" from="Guard" to="Message" method="_on_guard_player_win"]
+[connection signal="playerWin" from="Guard" to="key" method="_on_guard_player_win"]
+[connection signal="playerWin" from="Guard" to="Player" method="_on_guard_player_win"]
+[connection signal="pressed" from="dead/Button" to="." method="_on_button_pressed"]

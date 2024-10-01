@@ -1,0 +1,179 @@
+[gd_scene load_steps=15 format=3 uid="uid://2m7lhi3v1vje"]
+
+[ext_resource type="Script" path="res://message.gd" id="1_fy407"]
+[ext_resource type="FontFile" uid="uid://ddiutwg75aa5l" path="res://src/MFont.otf" id="2_s3fln"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hvual"]
+a = Vector2(0, -66)
+b = Vector2(0, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csly2"]
+size = Vector2(129, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldg33"]
+font = ExtResource("2_s3fln")
+font_size = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7ete"]
+size = Vector2(31, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_or34p"]
+font = ExtResource("2_s3fln")
+font_size = 20
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5etcw"]
+a = Vector2(31, 0)
+b = Vector2(-31, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jw2w5"]
+font = ExtResource("2_s3fln")
+font_size = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klrer"]
+size = Vector2(767, 895)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4yse"]
+size = Vector2(679, 733.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfo03"]
+size = Vector2(1025, 298)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeifm"]
+size = Vector2(979, 291)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f7nc3"]
+a = Vector2(-30, -18)
+b = Vector2(30, -18)
+
+[node name="Message" type="Node"]
+script = ExtResource("1_fy407")
+
+[node name="st" type="Area2D" parent="."]
+position = Vector2(495, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="st"]
+position = Vector2(-4, 1)
+shape = SubResource("SegmentShape2D_hvual")
+
+[node name="door1mes" type="Area2D" parent="."]
+position = Vector2(1344, 193)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door1mes"]
+position = Vector2(-0.5, 14)
+shape = SubResource("RectangleShape2D_csly2")
+
+[node name="Label" type="Label" parent="door1mes"]
+texture_filter = 1
+offset_left = -110.0
+offset_top = -82.0
+offset_right = 112.0
+offset_bottom = -59.0
+text = "The door was stucked"
+label_settings = SubResource("LabelSettings_ldg33")
+metadata/_edit_use_anchors_ = true
+
+[node name="door2mes" type="Area2D" parent="."]
+position = Vector2(1824, 193)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door2mes"]
+position = Vector2(1, 14)
+shape = SubResource("RectangleShape2D_csly2")
+
+[node name="Label" type="Label" parent="door2mes"]
+texture_filter = 1
+offset_left = -150.0
+offset_top = -82.0
+offset_right = 150.0
+offset_bottom = -59.0
+text = "Need Yellow Key to open door"
+label_settings = SubResource("LabelSettings_ldg33")
+metadata/_edit_use_anchors_ = true
+
+[node name="door3mes" type="Area2D" parent="."]
+position = Vector2(2225, 321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door3mes"]
+position = Vector2(-2.5, -2)
+shape = SubResource("RectangleShape2D_m7ete")
+
+[node name="Label" type="Label" parent="door3mes"]
+texture_filter = 1
+offset_left = -104.0
+offset_top = -67.0
+offset_right = 202.0
+offset_bottom = -44.0
+text = "Need Blue Key to exit dungeon"
+label_settings = SubResource("LabelSettings_or34p")
+metadata/_edit_use_anchors_ = true
+
+[node name="zoom_maze" type="Area2D" parent="."]
+position = Vector2(1824, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="zoom_maze"]
+position = Vector2(0, -19)
+shape = SubResource("SegmentShape2D_5etcw")
+
+[node name="Label" type="Label" parent="zoom_maze"]
+texture_filter = 1
+offset_left = -143.0
+offset_top = 225.0
+offset_right = 143.0
+offset_bottom = 268.0
+text = "Find Gold Key
+in the Storage"
+label_settings = SubResource("LabelSettings_jw2w5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="district_storage_trig" type="Area2D" parent="."]
+position = Vector2(1823, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="district_storage_trig"]
+position = Vector2(207.5, 623.5)
+shape = SubResource("RectangleShape2D_klrer")
+
+[node name="district_guard_trig" type="Area2D" parent="."]
+position = Vector2(1822, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="district_guard_trig"]
+position = Vector2(286, -614)
+shape = SubResource("RectangleShape2D_j4yse")
+
+[node name="district_hallway_trig" type="Area2D" parent="."]
+position = Vector2(1183, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="district_hallway_trig"]
+position = Vector2(563.5, 2)
+shape = SubResource("RectangleShape2D_dfo03")
+
+[node name="district_entry_trig" type="Area2D" parent="."]
+position = Vector2(1823, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="district_entry_trig"]
+position = Vector2(-1191.5, -159.5)
+shape = SubResource("RectangleShape2D_eeifm")
+
+[node name="guard_mes" type="Area2D" parent="."]
+position = Vector2(1827, -158)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="guard_mes"]
+position = Vector2(-3, 114)
+shape = SubResource("SegmentShape2D_f7nc3")
+
+[connection signal="body_entered" from="st" to="." method="_on_st_body_entered"]
+[connection signal="body_entered" from="door1mes" to="." method="_on_door_1_mes_body_entered"]
+[connection signal="body_exited" from="door1mes" to="." method="_on_door_1_mes_body_exited"]
+[connection signal="body_entered" from="door2mes" to="." method="_on_door_2_mes_body_entered"]
+[connection signal="body_exited" from="door2mes" to="." method="_on_door_2_mes_body_exited"]
+[connection signal="body_entered" from="door3mes" to="." method="_on_door_3_mes_body_entered"]
+[connection signal="body_exited" from="door3mes" to="." method="_on_door_3_mes_body_exited"]
+[connection signal="body_entered" from="zoom_maze" to="." method="_on_zoom_maze_body_entered_lable_visible"]
+[connection signal="body_entered" from="zoom_maze" to="." method="_on_zoom_maze_body_entered"]
+[connection signal="body_entered" from="district_storage_trig" to="." method="_on_district_storage_trig_body_entered"]
+[connection signal="body_exited" from="district_storage_trig" to="." method="_on_district_storage_trig_body_exited"]
+[connection signal="body_entered" from="district_guard_trig" to="." method="_on_district_guard_trig_body_entered"]
+[connection signal="body_exited" from="district_guard_trig" to="." method="_on_district_guard_trig_body_exited"]
+[connection signal="body_entered" from="district_hallway_trig" to="." method="_on_district_hallway_trig_body_entered"]
+[connection signal="body_entered" from="district_entry_trig" to="." method="_on_district_entry_trig_body_entered"]
+[connection signal="body_entered" from="guard_mes" to="." method="_on_guard_mes_body_entered"]
